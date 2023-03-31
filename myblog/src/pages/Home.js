@@ -1,8 +1,27 @@
-import React from 'react'
+import React from 'react';
+import{getDocs,collection}from "firebase/firestore";
+import {db}from "../firebase-config";
+import {useState , useEffect} from 'react';
 
 function Home() {
-  return (
-    <div>Home</div>
+
+  const [postLists, setPostList]=useState([]);
+  const postsCollectionRef=collection(db, "posts");
+
+    useEffect(()=>{
+
+      const getPosts=async()=>{
+        const data=await getDocs(postsCollectionRef);
+        console.log(data);
+      };
+
+      getPosts();
+
+    });
+
+
+    return (
+    <div className="homePage">Home</div>
   )
 }
 
