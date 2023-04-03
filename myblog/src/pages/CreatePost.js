@@ -15,15 +15,15 @@ function CreatePost({isAuth}) {
   const postsCollectionRef=collection(db, "posts");
 
 // after submit post Text redirect yo home page 
-  let navigate= useNavigate();
+  let navigate = useNavigate();
 
 // a function that click submit btn to post the data to firebase and store it
-  const createPost= async()=>{
+  const createPost= async () =>{
   // each post will have title, post text, and author info in an object{}, and author info is from auth in firebase-config.js
     await addDoc(postsCollectionRef,{
       title, 
       postText, 
-      author:{name: auth.currentUser.displayName, id: auth.currentUser.uid},
+      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
     navigate("/");
   };
